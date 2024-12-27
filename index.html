@@ -3,17 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Git Learning Project v2.0</title>
+    <title>Git Learning Project v2.1</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <h1>Git Learning Project v2.0</h1>
+      <h1>Git Learning Project v2.1</h1>
       <p>This project helps demonstrate Git workflows</p>
+
+      <form id="nameForm" onsubmit="handleNameSubmit(event)" class="name-form">
+        <input
+          type="text"
+          id="nameInput"
+          placeholder="Enter your name"
+          aria-label="Your name"
+        />
+        <button type="submit">Save Name</button>
+      </form>
+
       <div id="timeDisplay"></div>
-      <button id="themeToggle" onclick="toggleDarkMode()">
-        Toggle Dark Mode
-      </button>
+
+      <div class="controls">
+        <button id="themeToggle" onclick="toggleDarkMode()">
+          Toggle Dark Mode
+        </button>
+        <button id="clockFormat" onclick="toggleClockFormat()">
+          Switch to 24 Hour
+        </button>
+      </div>
     </div>
     <script src="main.js"></script>
     <script src="features.js"></script>

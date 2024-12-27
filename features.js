@@ -1,25 +1,48 @@
-// Features for Git Learning Project - v2.0
+// Features for Git Learning Project - v2.1
 function updateTimeDisplay() {
   const timeDisplay = document.getElementById("timeDisplay");
   const now = new Date();
 
-  // Format the date and time nicely
   const options = {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
-    hour: "2-digit",
+    hour: use24Hour ? "2-digit" : "numeric",
     minute: "2-digit",
     second: "2-digit",
+    hour12: !use24Hour,
   };
 
-  const greeting = getGreeting();
+  const greeting = getGreeting(userPrefs.name);
   timeDisplay.innerHTML = `
         <h2>${greeting}</h2>
         <p>Current Date & Time:<br>
         ${now.toLocaleDateString("en-US", options)}</p>
     `;
+}
+
+// Add clock format preference
+let use24Hour = localStorage.getItem("use24Hour") === "true";
+
+function toggleClockFormat() {
+  use24Hour = !use24Hour;
+  localStorage.setItem("use24Hour", use24Hour);
+  updateTimeDisplay();
+  updateClockButton();
+}
+
+function updateClockButton() {
+  const clockBtn = document.getElementById("clockFormat");
+  clockBtn.textContent = `Switch to ${use24Hour ? "12" : "24"} Hour`;
+}
+
+function handleNameSubmit(event) {
+  event.preventDefault();
+  const nameInput = document.getElementById("nameInput");
+  userPrefs.setName(nameInput.value);
+  updateTimeDisplay();
+  nameInput.value = "";
 }
 
 // Add a color theme toggle
@@ -34,12 +57,15 @@ function toggleDarkMode() {
 // Update the time every second
 setInterval(updateTimeDisplay, 1000);
 
-// Initialize time display and theme
+// Initialize everything
 document.addEventListener("DOMContentLoaded", () => {
   updateTimeDisplay();
+  updateClockButton();
 
-  // Check for saved theme preference
   if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark-mode");
   }
+
+  // Set initial name input value
+  document.getElementById("nameInput").value = userPrefs.name;
 });
