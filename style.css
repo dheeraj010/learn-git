@@ -3,15 +3,55 @@
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 h1 {
   color: #333;
 }
 
+h2 {
+  color: #666;
+  margin: 10px 0;
+}
+
 #timeDisplay {
   margin-top: 20px;
-  padding: 10px;
+  padding: 20px;
   background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #222;
+  color: #fff;
+}
+
+.dark-mode h1 {
+  color: #fff;
+}
+
+.dark-mode h2 {
+  color: #ccc;
+}
+
+.dark-mode #timeDisplay {
+  background-color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#themeToggle {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
   border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+#themeToggle:hover {
+  background-color: #0056b3;
 }
