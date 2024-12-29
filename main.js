@@ -1,5 +1,5 @@
 // Version control demonstration
-console.log("Welcome to Git learning project - v2.1");
+console.log("Welcome to Git learning project - v3.0");
 
 function getCurrentTime() {
   const now = new Date();

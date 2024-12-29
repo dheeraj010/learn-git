@@ -1,4 +1,4 @@
-// Features for Git Learning Project - v2.1
+// Features for Git Learning Project - v3.0
 function updateTimeDisplay() {
   const timeDisplay = document.getElementById("timeDisplay");
   const now = new Date();
