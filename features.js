@@ -40,7 +40,15 @@ function updateClockButton() {
 function handleNameSubmit(event) {
   event.preventDefault();
   const nameInput = document.getElementById("nameInput");
-  userPrefs.setName(nameInput.value);
+  const name = nameInput.value.trim();
+
+  if (!name) {
+    nameInput.classList.add("error");
+    setTimeout(() => nameInput.classList.remove("error"), 1500);
+    return;
+  }
+
+  userPrefs.setName(name);
   updateTimeDisplay();
   nameInput.value = "";
 }

@@ -9,9 +9,14 @@ function getCurrentTime() {
 // Add a greeting function with user's name
 function getGreeting(userName = "") {
   const hour = new Date().getHours();
-  const greeting =
-    hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
-  return userName ? `${greeting}, ${userName}!` : greeting;
+  let greeting;
+  if (hour < 6) greeting = "Good night";
+  else if (hour < 12) greeting = "Good morning";
+  else if (hour < 18) greeting = "Good afternoon";
+  else if (hour < 22) greeting = "Good evening";
+  else greeting = "Good night";
+
+  return userName ? `${greeting}, ${userName}! 👋` : greeting;
 }
 
 // Add user preferences
